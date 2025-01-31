@@ -1,0 +1,39 @@
+.table-border {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.table-border th, .table-border td {
+  border: 1px solid black;
+  padding: 5px;
+}
+.table-border tr:nth-child(even) {
+  background-color: #dfdddd; 
+}
+
+.table-border tr:nth-child(odd) {
+  background-color: #ffffff; 
+}
+.table-border thead{
+  background: gray;
+    color: white;
+}
+body, html {
+  margin: 0;
+  padding: 0px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  background-color: #f4f4f4;
+}
+.select-div{
+  height: 60px;
+    position: relative;
+}
+.select-div select{
+    position: absolute;
+    right: 20px;
+    height: 30px;
+    padding: 5px;
+
+}

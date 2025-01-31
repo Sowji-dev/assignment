@@ -1,0 +1,37 @@
+[
+    { "customerId": "123", "name": "Amit Sharma", "month": "January", "amount": 120 },
+    { "customerId": "123", "name": "Amit Sharma", "month": "January", "amount": 85 },
+    { "customerId": "123", "name": "Amit Sharma", "month": "February", "amount": 135 },
+    { "customerId": "123", "name": "Amit Sharma", "month": "February", "amount": 60 },
+    { "customerId": "123", "name": "Amit Sharma", "month": "March", "amount": 95 },
+    { "customerId": "123", "name": "Amit Sharma", "month": "March", "amount": 110 },
+    
+    { "customerId": "456", "name": "Priya Patel", "month": "January", "amount": 150 },
+    { "customerId": "456", "name": "Priya Patel", "month": "January", "amount": 45 },
+    { "customerId": "456", "name": "Priya Patel", "month": "February", "amount": 78 },
+    { "customerId": "456", "name": "Priya Patel", "month": "February", "amount": 100 },
+    { "customerId": "456", "name": "Priya Patel", "month": "March", "amount": 130 },
+    { "customerId": "456", "name": "Priya Patel", "month": "March", "amount": 40 },
+    
+    { "customerId": "789", "name": "Rahul Verma", "month": "January", "amount": 200 },
+    { "customerId": "789", "name": "Rahul Verma", "month": "January", "amount": 150 },
+    { "customerId": "789", "name": "Rahul Verma", "month": "February", "amount": 90 },
+    { "customerId": "789", "name": "Rahul Verma", "month": "February", "amount": 115 },
+    { "customerId": "789", "name": "Rahul Verma", "month": "March", "amount": 160 },
+    { "customerId": "789", "name": "Rahul Verma", "month": "March", "amount": 80 },
+    
+    { "customerId": "101", "name": "Sita Reddy", "month": "January", "amount": 95 },
+    { "customerId": "101", "name": "Sita Reddy", "month": "January", "amount": 65 },
+    { "customerId": "101", "name": "Sita Reddy", "month": "February", "amount": 120 },
+    { "customerId": "101", "name": "Sita Reddy", "month": "February", "amount": 200 },
+    { "customerId": "101", "name": "Sita Reddy", "month": "March", "amount": 135 },
+    { "customerId": "101", "name": "Sita Reddy", "month": "March", "amount": 110 },
+    
+    { "customerId": "202", "name": "Anjali Desai", "month": "January", "amount": 180 },
+    { "customerId": "202", "name": "Anjali Desai", "month": "January", "amount": 95 },
+    { "customerId": "202", "name": "Anjali Desai", "month": "February", "amount": 105 },
+    { "customerId": "202", "name": "Anjali Desai", "month": "February", "amount": 60 },
+    { "customerId": "202", "name": "Anjali Desai", "month": "March", "amount": 140 },
+    { "customerId": "202", "name": "Anjali Desai", "month": "March", "amount": 50 }
+]
+  
