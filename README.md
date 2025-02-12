@@ -38,7 +38,7 @@ Transaction of $40
 ## How to Run the Application
 
 1. Clone the repository:
-   git clone https://github.com/your-repo/reward-points-app.git
+   git clone https://github.com/Sowji-dev/assignment.git
    cd reward-points-app
 
 2. Install dependencies:
