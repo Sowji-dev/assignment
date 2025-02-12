@@ -4,59 +4,66 @@ import axios from 'axios';
 import ShowEachCustomer from './ShowEachCustomer';
 
 const TransactionsList = () => {
-  const [custData,setCustData]=useState([])
-  const [sortOrder, setSortOrder] = useState(null);
-  const getTransactions = async () => {
-    try {
-      const response = await axios.get('/transactions.json'); 
-      let responseData=calculatePointsPerCust(response.data)
-      setCustData(Object.values(responseData))
-      
-      
-    } catch (err) {
-      console.error( err);
-    }
-  };
+  const [custData, setCustData] = useState([])
+  const [selectedCustID, setSelectedCustID] = useState("")
+  const [selectedCustData, setSelectedCustData] = useState({})
+  const [error, setError] = useState(null)
+
   useEffect(() => {
-     getTransactions(); 
-  }, []);
-  const sortedData = sortOrder ? 
-    [...custData].sort((a, b) => {
-      if (sortOrder === "ascending") {
-        return a.totalPoints - b.totalPoints;
-      } else if (sortOrder === "descending") {
-        return b.totalPoints - a.totalPoints;
-      }
-    })
-    : custData; 
+    axios.get('/mockData/transactions.json')
+      .then(response => {
+        let responseData = calculatePointsPerCust(response.data)
+        setCustData(Object.values(responseData))
+      })
+      .catch(err => {
+        setError('Failed to load data. Please try again later.')
+      })
+  }, [])
+
+  const handleChange = (e) => {
+    const selectedId = e.target.value
+    setSelectedCustID(selectedId)
+    if (selectedId === "") {
+      setSelectedCustData({})
+      return;
+    }
+    const customer = custData.find(cust => cust.customerId === selectedId)
+    setSelectedCustData(customer || {})
+  }
 
   return (
     <>
-      <div className='select-div'>
-      <select value={sortOrder || ""} onChange={(e) => setSortOrder(e.target.value)}>
-          <option value="">Sort Reward points</option> 
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
-        </select>
-      </div>
-     
-      <table className="table-border">
-        <thead>
-            <th>Customer ID</th>
-            <th>Name</th>
-            <th>January</th>
-            <th>February </th>
-            <th>March </th>
-            <th>Reward points</th>
-        </thead>
-        <tbody>
+      {
+        error ? <div>{error}</div> : 
+        <>
+          <select className='cust-select' value={selectedCustID} onChange={handleChange}>
+            <option value="">Select a Customer</option>
             {
-                sortedData.map((cust,i)=>{
-                    return <ShowEachCustomer cust={cust}></ShowEachCustomer>
-                })
+              custData.map((cust, i) => {
+                return <option key={i} value={cust.customerId}>{cust.name}</option>;
+              })
             }
-            </tbody>
-      </table>
+          </select>
+          {
+            selectedCustData.customerId && 
+            <table className='rewards-table'>
+              <thead>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Name</th>
+                  <th>January</th>
+                  <th>February</th>
+                  <th>March</th>
+                  <th>Total Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ShowEachCustomer cust={selectedCustData} />
+              </tbody>
+            </table>
+          }
+        </>
+      }
     </>
   );
 };

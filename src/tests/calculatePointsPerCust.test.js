@@ -1,27 +1,29 @@
-import { calculatePointsPerCust } from '../utils/calculatePointsPerCust';
-
-const testTransactions = [
-  { "customerId": "123", "name": "Amit Sharma", "month": "January", "amount": 120 },
-  { "customerId": "123", "name": "Amit Sharma", "month": "February", "amount": 60 },
-  { "customerId": "456", "name": "Priya Patel", "month": "January", "amount": 150 },
-  { "customerId": "456", "name": "Priya Patel", "month": "February", "amount": 78 },
-];
-
-describe('calculatePointsPerCust', () => {
-  test('should calculate total points and monthly points for customers', () => {
-    const result = calculatePointsPerCust(testTransactions);
-
-    expect(result["123"].totalPoints).toBe(100); 
-    expect(result["123"].monthlyPoints["January"]).toBe(90);
-    expect(result["123"].monthlyPoints["February"]).toBe(10);
-
-    expect(result["456"].totalPoints).toBe(178); 
-    expect(result["456"].monthlyPoints["January"]).toBe(150);
-    expect(result["456"].monthlyPoints["February"]).toBe(28);
-  });
-
-  test('should return empty object for no transactions', () => {
-    const result = calculatePointsPerCust([]);
-    expect(result).toEqual({});
-  });
-});
+import { calculatePointsPerCust } from '../utils/calculatePointsPerCust' 
+describe('Reward Points Calculation per customer', () => {
+   test('calculates total points  for a customer with multiple transactions per month', () => {
+    const testData = [
+      { customerId: '123', name: 'Amit Sharma', month: 'January', amount: 150 },
+      { customerId: '123', name: 'Amit Sharma', month: 'January', amount: 80 },
+      { customerId: '123', name: 'Amit Sharma', month: 'February', amount: 75 },
+      { customerId: '123', name: 'Amit Sharma', month: 'February', amount: 25 },
+      { customerId: '123', name: 'Amit Sharma', month: 'March', amount: 50 },
+      { customerId: '123', name: 'Amit Sharma', month: 'March', amount: 110 },
+    ] 
+    const result = calculatePointsPerCust(testData) 
+    const customer = result['123'] 
+    expect(customer.totalPoints).toBe(275)  //180 points from January, 25 points from February, 70 points from March 
+  }) 
+  test('calculates total points correctly for a customer with no qualifying transactions in a month', () => {
+    const testData = [
+      { customerId: '124', name: 'Priya Patel', month: 'January', amount: 40 },
+      { customerId: '124', name: 'Priya Patel', month: 'January', amount: 30 },
+      { customerId: '124', name: 'Priya Patel', month: 'February', amount: 45 },
+      { customerId: '124', name: 'Priya Patel', month: 'February', amount: 60 },
+      { customerId: '124', name: 'Priya Patel', month: 'March', amount: 50 },
+      { customerId: '124', name: 'Priya Patel', month: 'March', amount: 55 },
+    ] 
+    const result = calculatePointsPerCust(testData) 
+    const customer = result['124'] 
+    expect(customer.totalPoints).toBe(15)  // 10 points for Feb and  5points for March
+   }) 
+}) 

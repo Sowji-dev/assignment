@@ -1,20 +1,30 @@
-import { calculateRewardPoints } from '../utils/rewardCalculator';
+import { calculateRewardPoints } from '../utils/calculatePointsPerCust'
+describe('Reward points calculation',()=>{
+  test('calculates points for amount below 50',()=>{
+    const amount = 30  
+    const points = calculateRewardPoints(amount)    
+    expect(points).toBe(0)  
+  })  
+  test('calculates points for amount exactly 50', ()=>{
+    const amount = 50  
+    const points = calculateRewardPoints(amount)    
+    expect(points).toBe(0)   // No points for amount <= 50
+  })  
 
-describe('calculateRewardPoints', () => {
-  test('should calculate 0 points for amounts under 50', () => {
-    expect(calculateRewardPoints(40)).toBe(0); 
-  });
+  test('calculates points for amount exactly 100',()=>{
+    const amount = 100  
+    const points = calculateRewardPoints(amount)    
+    expect(points).toBe(50)   // 1 point for every dollar between 50 and 100
+  })  
+  test('calculates points for amount between 50 to 100',()=>{
+    const amount = 86  
+    const points = calculateRewardPoints(amount)    
+    expect(points).toBe(36)   // 1 point for the first 50 dollars, 2 points for 1 dollar anbove 100
+  })  
 
-  test('should calculate 1 point for each dollar between 50 and 100', () => {
-    expect(calculateRewardPoints(60)).toBe(10);
-    expect(calculateRewardPoints(95)).toBe(45); 
-  });
-
-  test('should calculate 2 points for every dollar over 100', () => {
-    expect(calculateRewardPoints(120)).toBe(90); 
-  });
-
-  test('should calculate the combined points correctly for amounts greater than 100', () => {
-    expect(calculateRewardPoints(140)).toBe(130); 
-  });
-});
+  test('calculates points for amount above 100',()=>{
+    const amount = 150  
+    const points = calculateRewardPoints(amount)    
+    expect(points).toBe(150)   // 1 point for the first 50 dollars, 2 points for the next 100 dollars
+  })  
+})  

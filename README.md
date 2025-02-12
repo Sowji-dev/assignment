@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Reward Points Calculation App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application calculates reward points for customers based on their monthly transactions. 
 
-## Available Scripts
+- 2 points for every dollar spent over $100 on each transaction
+- 1 points for every dollar spent over $50 on each transaction.
+- No points for below $50
 
-In the project directory, you can run:
+The application takes customer transactions on a monthly basis and calculates the total points rewarded by each customer for each month as well as their total points.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Examples
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ Transaction of $140
+ - The first $50 earns no points
+ - The  $50 earns 50 points (1 point for every dollar from 50 to 100 )
+ - The remaining $40 earns 80 points (2 points for every dollar above 100)
+   Total points => 50+80=130 points
 
-### `npm test`
+ Transaction of $75
+  - The first $50 earns no points
+ - The remaining $25 earns 25 points(1 point for every dollar from 50 to 100 ).
+  Total points =>25 points
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Transaction of $40
+ - No points are awarded as the amount is below $50.
+  Total points =>25 points
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Customer Points Calculation:
+ For each customer, the application calculates points for each transaction and also calculates monthly transactions.
+- Monthly and Total Points: The app displays points per month as well as the cumulative total points for all months.
+- Transaction Data: The app reads transaction data from a JSON file (transactions.json) and calculate points for each customer.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## How to Run the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
+   git clone https://github.com/your-repo/reward-points-app.git
+   cd reward-points-app
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies:
+    npm install axios
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Running the Application:
+    npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    This will start a local server. Open your browser and visit:
+    http://localhost:3000
 
-## Learn More
+4. Running the test cases:
+    npm test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

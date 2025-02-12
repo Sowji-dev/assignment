@@ -1,23 +1,4 @@
-.table-border {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
 
-.table-border th, .table-border td {
-  border: 1px solid black;
-  padding: 5px;
-}
-.table-border tr:nth-child(even) {
-  background-color: #dfdddd; 
-}
-
-.table-border tr:nth-child(odd) {
-  background-color: #ffffff; 
-}
-.table-border thead{
-  background: gray;
-    color: white;
-}
 body, html {
   margin: 0;
   padding: 0px;
@@ -25,15 +6,15 @@ body, html {
   justify-content: center; 
   align-items: center; 
   background-color: #f4f4f4;
+  text-align: center;
 }
-.select-div{
-  height: 60px;
-    position: relative;
+.rewards-table,tr,th,td{
+  border: 2px solid;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
 }
-.select-div select{
-    position: absolute;
-    right: 20px;
-    height: 30px;
-    padding: 5px;
-
+.cust-select{
+  height: 30px;
+  margin-bottom: 30px;
 }
