@@ -1,4 +1,4 @@
-import { calculateRewardPoints } from '../utils/calculatePointsPerCust'
+import { calculateRewardPoints } from '../utils/calculatePointsPerCustomer'
 describe('Reward points calculation',()=>{
   test('calculates points for amount below 50',()=>{
     const amount = 30  
@@ -25,6 +25,6 @@ describe('Reward points calculation',()=>{
   test('calculates points for amount above 100',()=>{
     const amount = 150  
     const points = calculateRewardPoints(amount)    
-    expect(points).toBe(150)   // 1 point for the first 50 dollars, 2 points for the next 100 dollars
+    expect(points).toBe(150)   // 1 point for the first 50 dollars,2 points for the next 100 dollars
   })  
 })  

@@ -1,14 +1,14 @@
-
-import React from 'react';
-import TransactionsList from './components/TransactionsList';
 import './App.css'; 
-const App = () => {
+import React from 'react';
+import TransactionsList from './components/transactionList';
+
+function App() {
   return (
     <div className="App">
       <h2>Customer Transaction Points</h2>
-      <TransactionsList />
+      <TransactionsList /> 
     </div>
-  );
-};
+  )
+}
 
 export default App;

@@ -1,4 +1,4 @@
-import { calculatePointsPerCust } from '../utils/calculatePointsPerCust' 
+import { calculatePointsPerCustomer } from '../utils/calculatePointsPerCustomer' 
 describe('Reward Points Calculation per customer', () => {
    test('calculates total points  for a customer with multiple transactions per month', () => {
     const testData = [
@@ -9,7 +9,7 @@ describe('Reward Points Calculation per customer', () => {
       { customerId: '123', name: 'Amit Sharma', month: 'March', amount: 50 },
       { customerId: '123', name: 'Amit Sharma', month: 'March', amount: 110 },
     ] 
-    const result = calculatePointsPerCust(testData) 
+    const result = calculatePointsPerCustomer(testData) 
     const customer = result['123'] 
     expect(customer.totalPoints).toBe(275)  //180 points from January, 25 points from February, 70 points from March 
   }) 
@@ -22,8 +22,8 @@ describe('Reward Points Calculation per customer', () => {
       { customerId: '124', name: 'Priya Patel', month: 'March', amount: 50 },
       { customerId: '124', name: 'Priya Patel', month: 'March', amount: 55 },
     ] 
-    const result = calculatePointsPerCust(testData) 
+    const result = calculatePointsPerCustomer(testData) 
     const customer = result['124'] 
-    expect(customer.totalPoints).toBe(15)  // 10 points for Feb and  5points for March
+    expect(customer.totalPoints).toBe(15)  // 10 points for Feb and 5points for March
    }) 
 }) 
